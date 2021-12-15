@@ -1,0 +1,77 @@
+*IPv4
+    - separated into 4 parts (octets)
+        8 bits each
+    Class   Range       Subnetwork      Network Part (bits) Host Part
+    A       1-126       255.0.0.0       /8                  /24
+    B       128-191     255.255.0.0     /16                 /16
+    C       192-223     255.255.255.0   /24                 /8
+    D       224-239 
+    E       240-255
+
+    For example
+        /11 on bits
+        /11 = 11111111.11100000.00000000.000000000
+            = 255.224.0.0
+        divide the given CIDR into 8ths to convert it into subnet mask
+
+        CIDR to subnet mask
+        /29 = 8.8.8.5 = 255.255.255.248
+
+        subnet mask to CIDR
+        255.255.255.248 = 8.8.8.5 = /29
+        255.255.255.128 = 8.8.8.1 = /25
+        255.252.0.0     = 8.6.0.0 = /14
+
+
+    Block size 
+    (256 - last subnet mask)
+
+    For example
+        192.168.1.0/28
+        Subnet mask = 255.255.255.240
+        Block Size  = 256 - 240
+                    = 16
+
+        /19
+        Subnet mask = 255.255.255.224
+        Block Size  = 256 - 224
+                    = 32
+
+    Number of Network
+    2 ^ n, where (CIDR - Default CIDR) OR (Remaining on bit) = n 
+
+    For example
+
+        /29
+        Subnet mask = 255.255.255.248
+        n   = 29 - 24 
+            = 5
+
+        2 ^ n = 2 ^ 5 = 32
+
+        OR 
+
+        (8.8.8).5 = remaining on bit
+        
+        2 ^ 5 = 32
+
+
+        172.168.100.1/20
+        Subnet mask = 255.255.240.0
+        Block size = 256 - 240 = 16
+        No. of Network = 2 ^ 4 = 16
+
+
+    Number of host 
+    (2 ^ n) - 2 where n = (32 - CIDR) OR (Number of off bits)
+
+    FORMULAE:
+        -   Block size 
+            /(256 - last subnet mask)
+        -   Number of Network
+            2 ^ n, where (CIDR - Default CIDR) OR (Remaining on bit) = n 
+        -   Number of host 
+            (2 ^ n) - 2 where n = (32 - CIDR) OR (Number of off bits)
+
+
+    subnetting.net > free subnetting tools > first > 20 questions minimum

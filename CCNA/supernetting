@@ -1,0 +1,78 @@
+IP Summary 
+    keep the common parts same and put 0 in the place of the different part for network representation  
+    represent the different parts in binary 
+    add the off bits or 255 - on bits for summary subnet mask
+
+
+    Example: 
+        192.168.1.0/24
+        192.168.2.0/24
+        192.168.3.0/24
+        ---------------
+        192.168.0.0
+        255.255.252.0
+
+    
+        172.168.1.100/24
+        172.168.5.210/28
+        172.168.10.150/22
+        ---------------
+        172.168.0.0
+        255.255.240.0
+
+
+        172.168.12.0/21
+        172.168.1.100/24
+        172.168.5.210/28
+        172.168.10.150/22
+        ---------------
+        172.168.0.0
+        255.255.240.0
+
+
+        10.1.2.10/21
+        10.5.60.20/16
+        10.18.1.250/8
+        ---------------
+        10.0.0.0
+        255.224.0.0
+
+
+wild card mask 
+    opposite of subnet mask (similar to complement in binary)
+    calculated by subtracting given subnet mask from broadcast address
+    used according to requirement of protocol
+
+    255.255.252.0 -> 0.0.3.255
+
+VLSM (Variable Length Subnet Mask)
+    used to recude the IP wastage
+    always done from larger number to lower number 
+    
+    example: 
+        req 50, 10, 100, 5, 30 users in 192.168.1.0/24
+
+        arranging; 100, 50, 30, 10, 5
+        100 - 128
+        50 - 64
+        30 - 32
+        10 - 16
+        5 - 8
+
+        100 users; 192.168.1.0/25
+        50 users; 192.168.1.128/26
+        20 users; 192.168.1.192/27
+        10 users; 192.168.1.224/28
+        5 users; 192.168.1.240/29
+
+        
+        req 120, 40, 20, 25, 10 users in 192.168.2.0/24
+        
+        arranging  120, 40, 25, 20, 10
+
+        120 users - 192.168.1.0/25
+        40 users - 192.168.1.128/26
+        25 users - 192.168.1.192/27
+        20 users - 192.168.1.224/27
+        10 users - 192.168.2.0/28 (?)
+

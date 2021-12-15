@@ -1,0 +1,26 @@
+Commands
+    website directory bruteforcing
+        dirb [website]
+
+    subdomain
+        amass enum -d [website] <optional> -r [domain]
+
+    pwndb.py git 
+    pwndb2am4tzkvold.onion 
+
+    /robots.txt path can also contain some information about the website 
+
+    xml sitemap has all directory information for the website if access is not denied 
+
+    Google Dorking simplified
+        https://pentest-tools.com/information-gathering/google-hacking
+
+    https://www.exploit-db.com/
+    
+    https://cmdnctrl.net/
+
+    whatweb [website]
+
+    wpscan [wordpress scan]
+
+    sharklasers.com -> temp mail basically 

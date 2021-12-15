@@ -1,0 +1,21 @@
+etherchannel
+port link aggregation technology
+even links are physically separate, they're logically the same
+there is no loop in this case as an etherchannel does not broadcast in its own channel
+max 8 links
+bandwith or the link must be same
+
+    two types of protocol
+        - PAgP (Port Aggregation Protocol) (Cisco Proprietary)
+            two modes
+                - auto
+                - desirable
+                auto x auto - can't
+                auto x des - can
+                des x des - can
+                desirable will initialize, auto will negotiate
+        - LACP (IEEE Link Aggregation Protocol) (Industry Standard)
+            two modes 
+                - active ~ desirable 
+                - passive ~ auto 
+

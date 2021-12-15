@@ -1,0 +1,32 @@
+useradd -mG <secondary group> -s <shell path> <username>
+
+-m to create home directory for user 
+-G group, 'sudo' for linux 
+-s default shell for user
+
+ln <file> <hardlink>
+ln -s <file> <softlink>
+
+*** learn about visudo and sudoers file 
+
+sudo !! : repeats the last command
+
+User_Alias [U] = [usernames]
+Host_Alias [H] = [hostnames]
+Runas_Alias [B] = [username]
+Cmnd Alias [C] = [commands]
+
+to find files with suid bit set
+    find [location] -perm -u=s [or 4000] 2>/dev/null
+
+    2>/dev/null removes errors
+
+echo $PATH shows searching order for commands or executables 
+
+to set temporary environment variable (for the session)
+    export A=hello 
+    echo $A [shows hello]
+    env [will also have A=hello]
+    
+path poisoning
+    export PATH=.:$PATH [searches for the command in the executing folder first]

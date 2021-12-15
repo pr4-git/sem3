@@ -1,0 +1,4 @@
+create a file named test.sh as a root user (sudo) -> {chown root root test.sh}
+set suid bit in test.sh
+run it as a normal user 
+do something as a root user using the file as a normal user

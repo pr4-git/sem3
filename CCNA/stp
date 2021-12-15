@@ -1,0 +1,72 @@
+STP (Spanning Tree Protocol)
+    used in order to stop the packets from looping 
+    IEEE 802.1D
+
+    one switch is a root bridge
+        all ports are forwarding 
+        designated ports (DP (green)) 
+
+        checks lower priority and bridge ID for root bridge 
+        priority = 32768 (default)
+        bridge ID = MAC (unique)
+
+
+        RP (Root Port) (green)
+            this exists in non-root bridges 
+            for forwarding 
+
+            criteria (low)
+                - cost reach upto RB 
+                    self explanatory
+                - sender bridge ID
+                    the bridge ID when it recieves packet
+                    the lower sender bridge ID is taken for RP  
+                - sender port ID
+                    the port ID when recieving packet 
+                    ex: fa0/1 is lower than fa0/2 
+                    the lower port ID is taken for RP
+
+        Alternate Blocking
+            low MAC sends to high in non-root bridges 
+            so the high MAC blocks its port 
+        
+        three types
+            NC  - CISCO
+            -----------
+            CST - RPVST 
+            STP - PVST
+            MST - MST
+
+
+        primary priority : defau;t - (4096 x 2)
+        secondary prioity : default - (4096)
+        default : default 
+
+    to change alt block port to rp, there is two methods, decerasing cost and changing sender port id 
+        when decreasing cost, it's always from non-root bridge to root bridge
+        when changing sender port id, it's in the root bridge
+
+    ports in stp are in one of 5 states 
+        - blocking : 20 secs to unblock (max age timer)
+        - listening - 15 secs to listen 
+        - learning  - 15 secs to learn 
+        - forwarding - after 50 seconds 
+        - disabled 
+
+        timer between listening to learning - forward delay timer (15 seconds)
+
+    
+    tcn - topology change notification 
+        * direct
+            - 30 seconds 
+            - uplinkfast = the tc doesn't take time  
+        * indirect  
+            - 50 seconds [30 + 20 max age timing]
+            - backbonefast = just takes 30 seconds (removes max age timer)
+
+        * 
+            - portfast = in access port 
+
+    bpdu guard 
+        in a switch, if a switch superior to the root bridge arrives, the port is disabled (error-disabled)
+        this is done to prevent attacks 

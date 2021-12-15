@@ -1,0 +1,280 @@
+There are 3 modes of operation:
+
+1. user-exec mode (restrictive)
+
+   - we cannot perform any kind of configuration command
+   - we can only execute certain show commands
+   - it is denoted by ">"
+
+2. privilege-exec mode (administrative)
+
+  - we can administrate switch or router through this mode - we can execute every available command
+  - it is denoted by "#"
+  - to go into privilege-exec mode, "enable" should be typed in user-exec mode
+
+3. global configuration mode
+
+  - in order to commit any command, we must commit those command via global communication mode
+  - to go into this mode, "configure terminal" should be typed in privilege-exec
+  - "exit" command is used to go back a level
+  - if ctrl-z is used here, it goes back to privilege-exec mode
+
+  There are two configuration types -
+
+  1. Running Configuration
+
+     - stays in volatile memory
+
+  2. Startup Configuration
+
+     - latest saved copy of running config is stored here
+     - stays in non-volatile memory
+
+  CISCO PACKET TRACER:
+  CLI commands for router configuration: enable > config terminal > interface {port no.} > ip address {ip address} {subnet mask} > no shutdown
+  can go directly from one interface to another
+  after that you need to "write" in admin mode (or copy running-config startup-config)
+
+  other command to show details about ports in router: show ip interface brief
+
+  how to add password for admin: 
+    - go to global 
+    - enable secret {password} 
+    - after exiting, password is required to enter admin mode
+
+  remove blank line with no prompt after shut / no shut: 
+    - line console 0 
+    - logging synchronous
+
+  configure routing (in configure terminal) 
+    - sho ip route 
+    - router eigrp ? 
+    - router eigrp <autonomous system number>
+      AS number should be same in both router
+      1-64511 for global use and 64512-65535 for private and reserved > THEN SEND NETWORK ADVERTISEMENT 
+    - network <ip addr> <wildcard bits>
+      here wildcard bits is taken by subtracting subnet mask from 255 - no auto
+
+      this should be done for both router
+
+  to enable IPv6 (in global config mode) 
+    - ipv6 unicast-routing 
+    - {go to any interface} 
+    - ipv6 add {ip address}/{prefix length} 
+    - no shut 
+    - show ipv6 int brief {for ip interface}
+
+      - [in PC you can use automatic because of EUI]
+
+  Some codes
+  line - Configure a terminal line
+  console - primary terminal line
+  aux - auxiliary line
+
+  to set password for console port (global) 
+    - line console 0 
+    - password {this sets password} 
+    - login {this starts asking for password} 
+    - exit 
+    - do write {"copy running-config startup-config" can also be used}
+
+  to set password for enable (global)
+    - enable password <password>
+  this sets plaintext password 
+    - enable secret <password>
+  this sets password in hash
+
+  to enable encryption {global} 
+    - service password-encryption
+
+  to disable... translating in router (global) 
+    - no ip domain-lookup
+  this disables domain lookup in router, translating... stops
+
+  use description command on interface to add a description to the interface
+  "show interface" shows this description
+
+  ssh configuration (global)
+    - ip domain-name {name}
+    - crypto key generate rsa
+    - default value is 512
+    - you can do show ip ssh to check if ssh is enabled
+    - line vty 0 4
+    - transport input ssh
+    - password {}
+    - login
+    - exit
+    - do write
+  username {name} privilege {15} secret {}
+
+      [to enable version 2 ssh, go to global config, ip ssh version 2 {rsa key should be 768 or more}]
+
+      to select multiple ports, use [interface range {port numbers}]
+
+  to check switchport mode 
+    - show interface {interface} switchport
+
+      There's two types of DTP (dynamic trunking protocols), it doesn't have security, it is a cisco proprietary protocol
+        - auto
+        - desirable
+
+      to change switchport mode
+        - switchport mode dynamic desirable
+
+  native vlan is 1 by default, data sent by user in native vlan in untagged, otherwise it is tagged. it is changed as a security measure - switchport trunk native vlan {vlan}
+
+  to enable vlan in switch (global) 
+    - sho vlan brief 
+    - vlan {number} 
+    - name {name}
+    (create as many vlans as you want) 
+    - exit 
+    - interface range {range} 
+    - switchport mode access
+    access mode supports only a single vlan, trunk port supports multiple vlans 
+    - switchport access vlan {vlan number}
+  (do this as long as you want to put vlans)
+
+  to remove vlan 
+    - no vlan {number}
+
+  to connect 2 switches (trunking) (global) 
+    - int {port} 
+    - switch mode trunk 
+    - switchport trunk allow vlan {vlan numbers}
+
+  IN THE TRUNKING VLAN
+    to remove allowed vlan in trunk 
+      - int {port} 
+      - switchport trunk allowed vlan remove {vlan number}
+
+    to keep just a single vlan
+      - int {port}
+      - switchport trunk allowed vlan {vlan number}
+
+    to add an vlan
+      - int {port}
+      - switchport trunk allowed vlan add {vlan number}
+
+    use "sho int trunk" to check vlans
+
+  L3 switch
+  ip routing : enables routing
+  no switchport : removes switching, puts the port in routing mode (execute inside port interface)
+  don't forget to "ip add" to assign an ip address to the port
+
+      delete vlan.dat : removes database of all vlans (in privilege mode)
+
+  two types of encapsulation - isl (cisco proprietary) - dot1q (open source, IEEE)
+
+  in production networks - int {number} - switchport trunk encapsulation dot1q - switchport mode trunk
+
+  trunk in L3 - L3 does not allow trunk automatically - int {interface} - switchport trunk {? to check the commands} - switchport trunk encapsulation dot1q - switchport trunk allow vlan {vlan numbers} - show int trunk
+
+  - show cdp neighbors
+
+  DHCP configuration: - configure ip in a port
+  [define a pool of addresses to assign, this is included in the network address] - ip dhcp ?
+  we will focus on pool and excluded addresses - ip dhcp pool {name} - goes inside the dhcp configuration menu - network {network address} {mask} - default-router {router ip address} - dns-server {router ip, or local domain name}
+
+      sho ip dhcp
+        - binding: ip address and mac address
+        - conflict: shows if conflict
+        - pool: pool info
+
+      to limit the dhcp ip from .100 to .200
+        - ip dhcp excluded-address {..}.1 {..}.99
+        - ip dhcp excluded-address {..}.201 {..}.254
+
+      need to reboot router in real scenario for changes to take place
+
+  Router on a stick model
+  to configure multiple networks in a single port
+  the virtual interface used for this is called sub interface
+
+      [configure vlan and trunking in switch first]
+
+      [global terminal in router]
+      - int {port}.{arbitrary number for sub interface}
+        it goes to the sub interface (config-subif)
+      -  we can't add ip directly, first we have to configure encapsulation protocol
+      - encapsulation dot1Q {vlan ID}
+      - ip add
+      - no sh
+
+      [try to configure dhcp if you want]
+      - go to main interface
+      - no sh
+
+
+      [on connecting two switches, check if port mode is in trunking or access]
+      to fix vlan mismatch
+        - go to switch connected port of new switch
+        - switchport mode access
+        - switchport access vlan {vlan id}
+        - int range {all interfaces of switch}
+        - switchport mode access
+        - switchport access vlan {vlan id}
+
+      router on a stick model allows for scalability
+      network automation can be done to configure similar settings on multiple devices
+
+  VTP - show vtp status
+  [default mode is server]
+  {keep the interfaces in trunk mode}
+
+      - vtp domain [domain name]
+      - vtp mode [server/client/transparent]
+      - vtp version [version number]
+      - vtp password [password]
+
+  STP - show spanning-tree
+
+      to make root bridge for specific vlan
+        - conf t
+        - spanning-tree vlan [vlan number] priority [priority number]
+
+      to make primary priority
+        - spanning-tree vlan [vlan number] root primary
+
+      to make secondary priority
+        - spanning-tree vlan [vlan number] root secondary
+
+      to change cost [in non-root bridge]
+        - int [interface number]
+        - spanning-tree vlan [vlan number] cost [cost number]
+
+      to change sender port ID [root bridge]
+        - int [interface number]
+        - spanning-tree vlan [vlan number] port-priority [number (0,16,32,64,96,...)]
+
+  TCN
+    FOR PORTFAST IN ACCESS PORT
+    [in global]
+      - spanning-tree portfast ?
+        - spanning-tree portfast edge default
+        - spanning-tree portfast default
+
+    [in interface]
+      - spanning tree portfast edge
+
+    FOR BACKBONEFAST
+      - spanning-tree backbonefast
+
+    FOR UPLINKFAST
+      - spanning-tree uplinkfast
+    
+    FOR BPDU GUARD
+      - spanning-tree bpduguard enable [in interface]
+      - spanning-tree portfaast bpduguard default [in global]
+
+  stp summary
+    - spanning-tree mode summary
+
+  rstp
+    - spanning-tree mode rapid-pvst
+
+  mst 
+    - spanning-tree mst config 
+    - instance [number] vlan [vlan numbers]
+    - revision [number]

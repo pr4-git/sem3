@@ -1,0 +1,15 @@
+CRUD operations 
+    Create 
+    Read
+    Update 
+    Delete 
+
+Types 
+    Inferential SQLi
+        blind sql injections; time-based sql, boolean-basesd sql 
+    
+    In-band SQLi 
+        error-based sql, union-based sql 
+
+    Out-of-hand SQLi 
+        can't use same channel to attack and gather information 

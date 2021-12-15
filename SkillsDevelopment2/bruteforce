@@ -1,0 +1,11 @@
+Commands
+    website directory bruteforcing
+        dirb [website]
+
+    subdomain
+        amass enum -d [website]
+
+    pwndb.py git 
+    pwndb2am4tzkvold.onion 
+
+    xml sitemap has all directory information for the website 

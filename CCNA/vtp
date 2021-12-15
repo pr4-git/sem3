@@ -1,0 +1,41 @@
+Vlan Trunking Protocol
+    used to manage vlan 
+    cisco proprietary 
+    vlan information like ID, name can be synchrolized with switches inside the same VTP domain
+
+    VTP criteria:
+        * domain - same [default: null]
+        * version - same 
+            version 1
+                - range 1-1005
+                - password in plaintext or MD5
+            
+            version 2
+                - extended vlan can be created but in transparent mode
+                - secure password storage
+
+            version 3
+                - can create extended vlan 
+                - secure password storage and management
+
+        * authentication/password - same [optional]
+
+    Modes 
+        - Server
+            create and delete vlan 
+        - Client
+            cannot create and delete vlan 
+        - Transparent
+            create and delete but locally (local database)
+
+            suppose there are 4 swithces as S1, C2, T3 and S4 
+            when S1 creates a vlan 2, C2 and S4 gets updated 
+            when vlan 2 is deleted by S2, it is deleted in C2 and S4 also
+            when T3 creates a vlan 10, it is not updated in the other switches
+            T3 also doesn't get update from S1 and S4 creations and deletions
+
+        configuration revision (CR) updates every time changes are made in server, similar to a change counter 
+        when adding new swtiches to the network, make sure to change the domain name or mode to transparent, so that the network doesn't go down due to a CR mismatch
+        on changing those, the CR value is reset and can be updated according to the production network
+
+        

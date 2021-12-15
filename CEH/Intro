@@ -1,0 +1,213 @@
+Top security attack vectors
+    - cloud computing threats
+        flaw in one client's application cloud allows attackers to access other client's data
+    - advanced persistent threats
+        stealing information from the victim machine
+    - viruses and worms
+        capable of infecting a network within seconds
+    - ransomware
+        restricts access and demands ransom
+    - mobile threats
+        mobiles have lesser security making them more vulnerable 
+    - botnet
+        a huge network of compromosed systems used to perform network attacks 
+    - insider attacks 
+        an attack performed by an entrusted person on a corporate network 
+    - phishing 
+        illegitimate email falsely claiming to be legitimate to steal personal information 
+    - web application threats 
+        attackers target web applications to steal credentials and other information the user might have saved 
+    - IoT threats    
+        IoT devices have software applications that are used to access the device remotely, flaws here allow remote access to an attacker 
+
+Types of attacks
+    - Operating System Attacks 
+        Buffer overlow, bugs in OS, unpatched OS vulnerabilities
+    - Misconfiguration Attacks 
+        Misconfiguration of web servers, application platforms, databases, networks, or frameworks
+    - Application Level Attacks 
+        Exploiting vulnerabilities in applications running on the information systems
+        Buffer overflow, cross-site scripting, MITM, DOS, session hijacking, etc
+    
+Defensive Information Warfare 
+    - Prevention
+    - Deterrence
+    - Alerts
+    - Detection
+    - Emergency Preparedness
+    - Response
+
+Offensive Information Warfare
+    - Web Application Attacks
+    - Web Server Attacks 
+    - Malware Attacks 
+    - MITM Attacks 
+    - System Hacking
+
+
+Hacking Phases
+    - Reconnaissance
+        refers to the preparatory phase where attacker seeks to gather information about a target
+        could be a future point of return, noited for ease of entry when target is known on a broader scale
+        reconnaissance target scale may include clients, employees, oprations, network and, systems
+
+        Types of reconnaissance 
+            - Passive
+                without directly interacting with the target  
+                searching public records and new releases  
+            - Active  
+                interacting directly with the target  
+                telephone calls to the help desk or technical department  
+  
+        Pre-Attack Phase  
+            Scanning refers to the pre-attack phase where attaker scans the network on the   basis of info gathered during recon   
+          
+        Port Scanner   
+        Extract Information  
+      
+    - Gaining Access   
+        Refers to the point where attacks obtains access to the operating system   
+        obtains access to the OS, system level application level, or network level  
+        attacker escalates privileges to obtain complete control of the system   
+  
+    - Maintaining Access  
+        Refers when the attacks tries to retain the ownership of the system   
+        using backdoors, rootkits or trojans  
+        attackers can upload, download, or manipulate data, applications, and configurations  
+        can use the system to lauch further attacks  
+  
+  
+Questions for ethical hackers   
+    What can the intruder see on the target system?   
+    What can an intruder do with that information?  
+    Does annyone at the target notice the intruders' attempts or success?  
+    If all the compoonents of information system are adequately protected, updated and   patched?  
+  
+
+Information Security Management Program
+    combination of well-defined policies, processes, procedures, standards, and guidelines to establish the required level of information security
+
+    Security Policy
+    Roles & Responsibilities | Security Guidelines & Frameworks
+    Risk Management | Technical Security Architecture | Asset Classification | Security Management and Operations
+    Business Resilience
+    Business Continuity Management | Disaster Recovery
+    Training & Awareness 
+    Security Metrics & Reporting
+
+    Governance | Compliance
+
+Enterprise Information Security Arrchitecture (EISA)
+    set of requirements, processes, principles, and models that determine the structure and behavior of and org's information systems 
+        - helps in monitoring and detecing network behaviors in real time
+        - detects and revocers from security breaches
+        - resource prioritizing resources 
+        - paying attention to various threats
+        - cost benefit regarding incident response, disaster recovery, event correlation
+        - procedure analysis for proper functioning and asset identification
+
+
+Network Security Zoning
+
+    to manage a secure network environment
+    effective control of inbound and outbound traffic
+
+    Internet Zone
+        Uncontrolled, outisde the boundaries or an org 
+    
+    Internet DMZ (Demiliterized Zone)
+        Controlled zone, provides a barrier between interal and internet
+
+    Production Network Zone
+        Restricted Zone, controls direct access from uncontrolled networks 
+
+    Intranet Zone 
+        Controlled zone, no heavy restrictions
+
+    Management Network Zone
+        Secured zone, strict policies 
+    
+
+Defense-in-Depth
+    several protection layers
+    prevents direct attacks against information system
+    break in one layer only leads to the next layer
+
+        - policies, procedures, awareness
+        - physical
+        - perimeter
+        - internal network 
+        - host 
+        - application 
+        - data 
+
+Information Security Policies
+    basic security requirements and rules to be implemented in order to protect and secure organization's information systems 
+
+    Goals
+        - maintain outline for management and administraction of network security 
+        - protect computing resources
+        - eliminate legal liabilities from employeesor third parties
+        - prevent waste of company's computing resources 
+        - prevent unauthorized modifications of data
+        - reduce risks caused by illegal use of system resource 
+        - differentiate user's access rights
+        - protect confidential, proprietary information from theft, misuse, unauthorized disclosure
+
+
+Types of Security Policies
+    Promiscuous Policy  
+        - No restrictions on usage
+    Permissive Policy 
+        - wide open, only known dangerous services/attacks or behaviors are blocked
+        - updated regularly
+    Prudent Policy 
+        - max security, but allows known but necessary dangers 
+        - blocks all services 
+        - only safe and necessary services are allowed
+    Paranoid Policy 
+        - blocks everything 
+
+    Examples 
+        - Access Control
+        - Remote-Access Policy 
+        - Firewall-Management Policy 
+        - Network-Connection Policy 
+        - User-Account Policy 
+        - Information-Protection Policy 
+        - Special-Access Policy
+        - Email Security Policy 
+
+Privacy Policies at Workplace
+    Basic rules
+    - intimate employees about what you collect and what you do with it 
+    - limit collection of information, and use fair and lawful means
+    - keep employees' personal information accurate, complete, and up-to-date 
+    - provide employeesaccess to their personal information 
+    - inform employees about potential collection, use, and disclosure of personal information 
+    - keep personal information secure 
+
+Threat Modeling
+    risk assesment approach
+
+    - identify security objectives
+    - application overview
+    - decompose application
+    - identify threats
+    - identify vulnerabilities
+
+Incident Management 
+    vulnerability handling
+    artifact handlin
+    accnouncements
+    Alerts
+    triage
+    reporting 
+
+Incident Management Process 
+    preparation for incident handling response
+    detection and analysis 
+    classification and prioritization 
+    containment 
+    forensic investigation 
+    eradication and recovery 

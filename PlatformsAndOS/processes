@@ -1,0 +1,55 @@
+How programs are converted into processes
+programs are passively stored in the memory
+when it is compiled and the executable file is executed, it is converted into a processs
+
+DEF: Process - a program in execution - present in the RAM - comprises of - executable instructions - stack - heap - state in the OS - state contains: registers, list of open files, related processes, etc.
+
+Process Memory Map (in the opposite order order)
+Stack - dynamic memory segment - arrays, pointers - contigious preallocated spaces
+Heap ^ - dynamic memory segment - data is continuously added, grows as program is executed - recursive functions, and modifiable data
+Data ^ - global variables and static variables
+Text ^ - text instructions in the program
+
+when stack and heap overlaps, there's no extra space, and invalid instructions are executed
+
+Communicating with the OS (System Calls)
+invokes a function in the kernel using a trap
+causes process to shift from user mode to shift to privileged mode
+on completion of the call, the execution is transferred back to the user
+
+System call v Procedure call
+System Call
+uses TRAP instruction
+system shifts from user space to kernel space
+TRAP always jumps to a fixed address
+
+    Procedure Call
+        uses CALL instruction
+        stays in user space
+        re-locateable address
+
+Why system calls?
+offers sophisticated features
+offers a layer of abstraction
+
+    In uniprogramming, a single program runs until the execution is complete, and the CPU might be idle during the execution process. This causes low CPU utilization.
+
+    In multiprogramming, the CPU switches to another program during the idle time; the user doesn't have to wait for the execution to be complete. However two programs aren't run simultaneously. Multiprogramming could cause starvation as one app could hang the entire system. Eg: if an infinite program is run during downtime, it can hang the entire system.
+
+    To mitigate this, each process is given a time slot, which it can't execute out of. It gives an impression that multiple programs are running concurrently. Such a system can be called a multitasking system.
+
+    This kind of system has an issue of task prioritization, and that there isn't any. On implementing proritization, another issue might arrise that low priority task might never get executed in the event that there are a lot of high priority task.
+
+    Priority-based = Preemptive system
+    Priority-less = Non-Preemptive system
+
+Mutliprocessor - each processor can execute an app independent of the other; parallelism
+
+    Race Conditions
+        - when two different processes request the same resources at once
+        - the apps need to be synchronized
+
+    Synchronization
+        - a shared file is associated with a lock
+        - ensures only one app can access the resource at once
+        - MutEx lock (mutual exclusion lock)

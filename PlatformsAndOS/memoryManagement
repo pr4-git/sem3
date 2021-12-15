@@ -1,0 +1,110 @@
+program must be brought from disk into memory and placed within a process to run 
+
+DEF: Memory Manager: 
+    - keeps track of which parts of memory are in use
+    - allocate and deallocate memory to processes
+    - manages swapping between main meory and disk 
+    - protects and shares memory 
+
+    Overhead:
+        burden on computational power, bandwith, resource. etc
+
+Basic Hardware
+    - if processor directly access from memory, it will create a latency
+    - a special purpose register called cache is used to reduce this latency as it pre-fetches instructions
+
+Memory Allocation Techniques
+    - Contiguous Model
+        * Single Contiguous Model 
+        * Partition Model 
+    - Non-Contigious Model 
+        * Paging 
+        * Virtual Memory 
+        * Segmentation
+
+
+    Contiguous Model 
+        * Single Contiguous Model
+            - one process occupies RAM at a time
+            - process memory size is limited to RAM size
+            - RAM is only utilized up to process size, so it might not be fully utilized 
+        * Partition Model 
+            - new processes are alloted to memory if sufficient contigious space is available 
+            - processes are deallocated on completion 
+            - on dellocation, free space might be fragmented causeing there to be less amount of contigious free space
+                eg - if 70K free space is divided as 60K+10K, a process of 65K cannot be started 
+
+            - (finding the right fit)
+                * first fit
+                    - analyzes free spaces from the top
+                    - puts the process in the first free space fragment it finds 
+                    - worsens fragmentation   
+                * best fit 
+                    - analyzes free space from the entire memory portion 
+                    - chooses the most appropirate space according to the least fragmentation done 
+                    - might affect performance (downtime during allocation)
+                * worst fit 
+                    - alloactes the process into the largest free space available 
+
+            - (dellocation)
+                - might have overhead of merging partitions
+             
+             Memory Allocation Policies: {numerical in copy and slides}
+
+        Limitations:
+            - Entire process needs to be in RAM 
+                [refer to Locality of Program]
+            - Contigious memory allocation is required
+            - Fragmentation 
+            - RAM size limits process size 
+            - Low performance 
+                * book-keeping
+                * partition management 
+    
+    Non-Contigious Model 
+        * Paging
+            - RAM is split into fixed equal size partitions (page frames)
+            - typically 4KBs in size 
+            - processes are also split into equal size partitions (blocks)
+            - block size = page frame size
+            - book-keeping is done in a page table, which shows which page frame is in which block per process
+            - it is not necessary that blocks are stored contigiously 
+            - processor checks into the page table to identify corresponding page number when a memory location is accessed
+            - blocks from different processes can share pages simultaneously
+
+                - not all blocks are required when a process is executed
+                - not all parts of the program are accessed simultaneously
+                - some code may not even be executed
+            Virtual memory takes advantage of this using a concept called demand paging
+
+        * Demand Paging
+            - pages loaded from disk to RAM only when required
+            - present bit (an extra column) in page table shows if block is in RAM or not 
+                if (present bit == 1){
+                    process in RAM
+                } else {
+                    process not in RAM
+                }    
+            - when process is executed, an exact replica of it is stored in a swap space on the disk 
+            - blocks are taken from disk to RAM as per requirement 
+            - Disk to RAM : Swap In 
+            - RAM to Disk : Swap Out 
+            
+            - if required block is not present in page frame RAM, OS issues an interuppt to swap in the page, called a page fault
+            - it swaps in the required block and changes the value of present bit to 1
+
+            - if no pages free, OS makes a decision to remove another block from the RAM
+            - some replacement policies include
+                * FIFO
+                * Least Recently Used (LRU)
+                * Optimal Page replacement
+            
+            - a page might need to be swapped back in after getting replaced 
+            - this is indicated by the value of dirty bit 
+                if(dirty bit == 1){
+                    page needs to be written back 
+                }
+            
+            - protections bit determines if page is executable, readonly and accessible by user process
+            
+        * Virtual Memory 

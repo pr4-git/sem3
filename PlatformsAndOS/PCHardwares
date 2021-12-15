@@ -1,0 +1,25 @@
+Every hardware device has an address noted in hexadecimal values. 
+ 
+Address Types: 
+    - Memory Address  
+        * Range: 0 to (RAM size) 
+        * where main memory is Mapped 
+            * uesd to store data for code, heap, stack, OS, etc 
+            * access by load/store instructions 
+    - IO Address 
+        * Addresses alloted separately for IO devices 
+        * Range: 0 to 2^16-1 
+        * used to access devices 
+        * isolated from memory 
+        * accessed by in/out instructions 
+    - Memory Mapped IO Address 
+        * memory addresses used for IO devices 
+        * used to store address for IO extensions 
+        * load/store instructions are used 
+   
+  Who decides the address ranges? 
+    Standards / Legacy 
+        * IBM PC Standards 
+        * Fixed for all PCs 
+        * Ensures BIOS and OS portability 
+         

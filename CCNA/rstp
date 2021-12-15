@@ -1,0 +1,6 @@
+rapid spanning tree protocol (rstp)
+    802.1w
+    faster than stp (obviously)
+
+multiple spanning tee (mst)
+    multiple vlans can share same settings  

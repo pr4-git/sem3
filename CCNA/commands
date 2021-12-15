@@ -1,0 +1,4 @@
+set clock 
+    > en 
+    # conf t 
+    (config) #
