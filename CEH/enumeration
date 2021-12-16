@@ -1,0 +1,65 @@
+Enumeration
+    - create active connection with the system
+    - perform directed queries
+    - perform password attacks
+    - conducted in an intranet environment
+
+    Information Enumerated
+        - network resources
+        - network shares
+        - routing tablbes
+        - audit & service settings
+        - SNMP and FQDN details 
+        - machine names & usernames 
+        - applications and banners 
+
+    Techniques 
+        - usernames using email IDs
+        - usernames using SNMP
+        - info using default passwords 
+        - info using DNS zone transfer 
+        - bruteforce active directory 
+        - user groups from windows 
+
+    NetBIOS Enumeration 
+        unique ASCII string to identify network devices 
+            - 15 chars for device name 
+            - 16th for sercive or name record type 
+        Nbtstat (util) 
+        hyena (util)
+
+    User Account Enumeration 
+        PsTools (util)
+    
+    SNMP Enumeration   
+        - consists of manager and agent
+        - agent is in every network device 
+        - manager is in separate computer 
+        - default community strings are used to extract information 
+
+        OpUtils (util)
+        Engineer's Toolset (util)
+
+    LDAP Enumeration 
+        - [research] 
+    
+    OATH - [research]
+
+    NTP Enumeration 
+        - NTP designed to sync clocks of network computers 
+        - uses UDP 123 
+        - can maintain time to within 10ms 
+        
+        attacker can query 
+            - lists of hosts connected to NTP 
+            - clients IP addresses in a network, system names and OSs
+            - interal IPs in case NTP server is in DMZ
+
+    SMTP Enumeration 
+
+    DNS Enumeration using Zone Transfer
+
+    IPsec Enumeration
+    VoIP Enumeration 
+    RPC Enumeration 
+    Unix/Linux Enumeration 

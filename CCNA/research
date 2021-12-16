@@ -2,3 +2,5 @@ root guard
 loop guard 
 bpdu filter 
 udid
+
+static floating routing 

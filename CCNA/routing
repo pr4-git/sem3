@@ -1,0 +1,24 @@
+routing table only has best path 
+
+router selects the best path to forward a data packet based on the following criteria
+    - longest prefix 
+        Eg: /32 > /24
+    - lower AD (administrative distance)
+        Eg: EIGRP(90) > OSPF(110)
+    - lower metric (distance basically)
+        Eg: 50 > 100
+
+types of route 
+    * static 
+        - manually configured 
+        - AD is 1
+        - used in small network and for dedicated service
+        - always best 
+        - need to configure in both requesting router and replying router 
+    * default 
+        - 
+    * dynamic    
+
+
+loopback interface
+    virtual interface so that extra routers are not required 

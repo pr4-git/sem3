@@ -121,7 +121,8 @@ There are 3 modes of operation:
       to change switchport mode
         - switchport mode dynamic desirable
 
-  native vlan is 1 by default, data sent by user in native vlan in untagged, otherwise it is tagged. it is changed as a security measure - switchport trunk native vlan {vlan}
+  native vlan is 1 by default, data sent by user in native vlan in untagged, otherwise it is tagged. it is changed as a security measure 
+    - switchport trunk native vlan {vlan}
 
   to enable vlan in switch (global) 
     - sho vlan brief 
@@ -165,17 +166,35 @@ There are 3 modes of operation:
 
       delete vlan.dat : removes database of all vlans (in privilege mode)
 
-  two types of encapsulation - isl (cisco proprietary) - dot1q (open source, IEEE)
+  two types of encapsulation 
+    - isl (cisco proprietary) 
+    - dot1q (open source, IEEE)
 
-  in production networks - int {number} - switchport trunk encapsulation dot1q - switchport mode trunk
+  in production networks 
+    - int {number} 
+    - switchport trunk encapsulation dot1q 
+    - switchport mode trunk
 
-  trunk in L3 - L3 does not allow trunk automatically - int {interface} - switchport trunk {? to check the commands} - switchport trunk encapsulation dot1q - switchport trunk allow vlan {vlan numbers} - show int trunk
+  trunk in L3 
+    - L3 does not allow trunk automatically 
+    - int {interface}  
+    - switchport trunk {? to check the commands} 
+    - switchport trunk encapsulation dot1q 
+    - switchport trunk allow vlan {vlan numbers} 
+    - show int trunk
 
   - show cdp neighbors
 
-  DHCP configuration: - configure ip in a port
-  [define a pool of addresses to assign, this is included in the network address] - ip dhcp ?
-  we will focus on pool and excluded addresses - ip dhcp pool {name} - goes inside the dhcp configuration menu - network {network address} {mask} - default-router {router ip address} - dns-server {router ip, or local domain name}
+  DHCP configuration: 
+    - configure ip in a port
+    [define a pool of addresses to assign, this is included in the network address] 
+    - ip dhcp ?
+    we will focus on pool and excluded addresses 
+    - ip dhcp pool {name} 
+    - goes inside the dhcp configuration menu 
+    - network {network address} {mask} 
+    - default-router {router ip address} 
+    - dns-server {router ip, or local domain name}
 
       sho ip dhcp
         - binding: ip address and mac address
@@ -278,3 +297,31 @@ There are 3 modes of operation:
     - spanning-tree mst config 
     - instance [number] vlan [vlan numbers]
     - revision [number]
+
+  to configure static routing 
+    - ip route [destination network] [subnet mask] [next hop ip]
+      <doesn't drop packets even if proxies are disabled>
+    , OR 
+    - ip route [destination network] [subnet mask] [exit interface]
+      <if proxies are disabled, packets will be dropped> 
+
+      NOTE: in the case of ethernet cable, don't use exit interface 
+            in the case of serial link, use exit interface 
+
+  to disable proxies 
+    - no ip proxy-arp 
+    - shut 
+    - no shut
+    - clear arp cache
+
+  to only show interface details where ip is assigned 
+    - sho ip int br | exclude unassigned 
+  to show static ip route table
+    - sho run | sec ip route 
+
+  to configure default routing 
+    - ip route 0.0.0.0 0.0.0.0 [next hop ip]
+    - ip route 0.0.0.0 0.0.0.0 [exit interface]
+
+  to make loopback [virtual interface]
+    - interface loopback [loopback number]
