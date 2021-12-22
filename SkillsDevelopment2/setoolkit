@@ -1,0 +1,11 @@
+sudo setoolkit
+
+creds 
+    - username: batch29
+    - password: softwarica
+    - email server: mail.smtp2go.com 
+    - port: 2525
+
+osintgram 
+    - username: batch29 practical 
+    - password: Softwarica@123

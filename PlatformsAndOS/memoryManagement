@@ -64,7 +64,7 @@ Memory Allocation Techniques
     Non-Contigious Model 
         * Paging
             - RAM is split into fixed equal size partitions (page frames)
-            - typically 4KBs in size 
+            - a page frame is typically 4KB in size 
             - processes are also split into equal size partitions (blocks)
             - block size = page frame size
             - book-keeping is done in a page table, which shows which page frame is in which block per process
@@ -107,4 +107,25 @@ Memory Allocation Techniques
             
             - protections bit determines if page is executable, readonly and accessible by user process
             
+        (replacement algs in copy and pdfs)
+
         * Virtual Memory 
+            - a technique that allows programs larger than physical memory to be executed 
+            - an address space, where large programs are stored as pages during execution and only required portions are loaded into main memory
+            - uses the concept of locality of progarm 
+            - similar to how NAT is used to convert public IPs into private, a smaller RAM size (physical) is also translated into a larger size (virtual)
+            
+            - a process is represented by its virtual address space
+            - a contigious addressable space
+
+            - processor always issues the virtual address first 
+            - a unit known as MMU (Memory Management Unit) converts this virtual address into physical pace 
+                - a PTPR (page table pointed register) points to the address 
+
+            - a virtual address is comprised of
+                * table index 
+                    size = 20 bit 
+                    points to the table entries 
+                * offset 
+                    equal to bit length of page index (4kb = 12 bit)
+                    stays in the physical address 
