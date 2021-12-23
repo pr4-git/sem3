@@ -323,5 +323,32 @@ There are 3 modes of operation:
     - ip route 0.0.0.0 0.0.0.0 [next hop ip]
     - ip route 0.0.0.0 0.0.0.0 [exit interface]
 
+    for floating static routing 
+      - ip route 0.0.0.0 0.0.0.0 [next hop ip / exit interface] [AD]
+
   to make loopback [virtual interface]
     - interface loopback [loopback number]
+
+RIP 
+  - router rip 
+  - network [network id]
+    [do this for all networks in the router]
+  - show ip pro 
+  - no auto-summary 
+
+  for v2 RIP
+    - router rip 
+    - version 2
+
+  to clear ip route
+    - clear ip route *
+
+  to send summary address in v2
+    - ip summary-address rip [summary address] [summary mask]
+
+  for authentication
+    - key chain [chain name] 
+    - key-string [password] 
+    - int [port number]
+    - authentication rip 
+    - key chain [chain name]

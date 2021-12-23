@@ -17,8 +17,41 @@ types of route
         - need to configure in both requesting router and replying router 
     * default 
         - 
-    * dynamic    
+    * dynamic
+        - forms a neighborship between routers  
+        * RIP (Routing Information Protocol)
+            - distance vector routing protocol 
+                - uses hop count for primary metric 
+            - maximum hop count = 15
+                - more than 16 routers means RIP doesn't work 
+            - AD 120 
+            - each rip router maintains a routing table 
+            - uses 520/udp port
+            - broadcasts every 30 seconds to update the topology
 
+            TIMINGS 
+                - update timer : 30 seconds
+                if no update,
+                - invalid timer : 180 seconds 
+                again, if no response,
+                - hold down timer : 180 seconds 
+                still not, 
+                - flush timer : 240 seconds (180 hold + 60 flush) 
+
+                Types of RIP
+                    - v1
+                        - classful (default subnet masks)
+                        - no summarization 
+                        - no authentication
+                        - not secure
+                        - broadcast 
+
+                    - v2
+                        - classless (non-default subnet masks)
+                        - can summarize
+                        - authentication
+                        - more secure 
+                        - multicast                 
 
 loopback interface
     virtual interface so that extra routers are not required 

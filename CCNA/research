@@ -4,3 +4,5 @@ bpdu filter
 udid
 
 static floating routing 
+
+apply authentication between r1 and r2 in given diagram (cisco@123)
