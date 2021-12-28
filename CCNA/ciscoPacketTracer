@@ -352,3 +352,21 @@ RIP
     - int [port number]
     - authentication rip 
     - key chain [chain name]
+
+EIGRP 
+  - router eigrp [autonomous system number]
+  OR,
+  {for name mode in ipv6}
+  - router eigrp [word] 
+  - network [network id]
+
+  to clear/refresh neighborship
+    - clear ip eigrp neighbors
+
+for interface metric component details 
+  - sh int [interface number]
+
+  change metric component values  
+    - int [interface number]
+    - delay [number/10]
+    - bandwidth [number]  
