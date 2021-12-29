@@ -1,0 +1,18 @@
+A Process Control Block (PCB) is required to manage processes
+    - a data structure created by OS 
+    - similar to a page table storing page frame information 
+    - when a program is converted into a process, a PCB is created for it by the OS 
+    - used to store information / attributes of a process
+    - information includes 
+        - process state 
+        - Process Identifier (PID) 
+            - unique identifying value 
+        - stack pointer 
+        - program counter 
+            - address of next instruction
+        - CPU Registers
+        - CPU scheduling information 
+        - Memory management information 
+        - Accounting information 
+            - like a log 
+        - I/O information

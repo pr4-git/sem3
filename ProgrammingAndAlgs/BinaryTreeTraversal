@@ -1,0 +1,16 @@
+Pre-Order Traversal 
+    - Visit the root node 
+    - Traverse the left sub-tree in preorder 
+    - Traverse the right sub-tree in preorder 
+
+In-Order Traversal 
+    - Traverse the left subtree, i.e, call Inorder (left subtree)
+        - left > root > right
+    - Visit the root 
+    - Traverse the right subtree, i.e, call Inorder (right subtree)
+        - left > root > right
+
+Post-Order Traversal 
+    - Traverse the left subtree, i.e, call Postorder (left subtree)
+    - Traverse the right subtree, i.e, call Postorder (right subtree)
+    - Visit the root
