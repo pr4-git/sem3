@@ -16,3 +16,52 @@ A Process Control Block (PCB) is required to manage processes
         - Accounting information 
             - like a log 
         - I/O information
+    
+    Process States 
+        minimum 5 states from creation to completion
+        names aren't standardized 
+        States:
+            1. New
+                when a program is first picked up by the main memory 
+            
+            2. Ready 
+                after creation the process enters the ready state
+                waiting for CPU to be assigned (waiting for execution)
+                multiple processes can exist in this state 
+            
+            3. Running 
+                depending on the scheduling alg of the OS, the process from ready queue are picked for execution 
+                if time quanta is complete, the process is relocated into the ready queue 
+                in case of a higher priority process in the ready, the running process can also be suspended  
+                if there is a single CPU only a single process exists in this state
+            
+            4. Block/Wait 
+                in case of an I/O request, a process transitions from running state to block/wait state 
+                after input is recieved, the process goes back to the ready state for scheduling 
+                multiple processes can exist in this state 
+            
+            5. Termination
+                on completion of the process, it comes into the terminated state 
+                it can be normal exit, fatal error exit, termination by other process
+                PCB is erased
+             
+            
+            RAM space is limited.
+            if a process has spent a lot of time in wait state, resources aren't properly utilized and RAM space is wasted.
+            for further optimization, some more state are introduced.
+
+            Suspend Ready 
+                process is transfered from ready to suspend ready:
+                    if higher priority process comes for execution 
+                    if ready queue is already packed
+                once memory is free, it is sent back to ready 
+                stored in secondary storage
+            
+            Suspend Wait 
+                similar to suspend ready 
+                    if required resources (I/O) are already in usa 
+                    if main memory is full
+                once resource is released, it is sent back
+            
+        
+    

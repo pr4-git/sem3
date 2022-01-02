@@ -14,3 +14,7 @@ Post-Order Traversal
     - Traverse the left subtree, i.e, call Postorder (left subtree)
     - Traverse the right subtree, i.e, call Postorder (right subtree)
     - Visit the root
+
+Breadth First Traversal 
+    - start at the root element 
+    - go left to right while going from top to bottom
