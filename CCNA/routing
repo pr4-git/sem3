@@ -51,7 +51,7 @@ types of route
                         - can summarize
                         - authentication
                         - more secure 
-                        - multicast
+                        - multicast - 224.0.0.9
 
         * EIGRP (Enhanced Interior Gateway Routing Protocol)
             - advanced distance vector routing protocol 
@@ -60,14 +60,16 @@ types of route
                 - 5 for summary
                 - 90 for internal 
                 - 170 for external
-            - only routing protocol that supports both equal and unequal cost load balance 
+            UNEQUAL COST LOAD BALANCE
+                - it's the only routing protocol that supports both equal and unequal cost load balance 
+                - using an sapect of eigrp called variance (by default its value is 1)
             
 
             Q. Why is EIGRP advanced distance vector routing protocol?
 
             Q. What is the difference between distance vector routing protocol and advanced distance routing protocol?
 
-            Q. Differentiate between distance vector and link state.
+            Q. Differentiate between distance vector and link state. (answer is in ospf pdf)
 
             - AS (Autonomous System) is a network or collection of networks managed & supervised by a single entity or organization.
 
@@ -90,20 +92,78 @@ types of route
             - multicast address 224.0.0.10
 
 
-Metric Calculation 
-    - metric weight (default values)
-        - k1 = 1
-        - k2 = 0
-        - k3 = 1
-        - k4 = 0
-        - k5 = 0
+            Metric Calculation 
+                - metric weight (default values)
+                    - k1 = 1
+                    - k2 = 0
+                    - k3 = 1
+                    - k4 = 0
+                    - k5 = 0
 
-    - metric component 
-        - bandwidth 
-        - load 
-        - delay 
-        - reliability 
-        - MTU 
+                - metric component 
+                    - bandwidth 
+                    - load 
+                    - delay 
+                    - reliability 
+                    - MTU 
+
+        * OSPF (Open Shortest Path First) [most important apparently]
+            - full topology database 
+            - not tcp or udp, port 89 
+            - classless 
+            - multicast 224.0.0.5
+            - uses cost for best path 
+            - for neighborship
+                - not necessary that process ID be same
+                - area must be same
+                - authentication must be same 
+                - subnet mask must be same in case of ethernet, not necessary in serial cable
+                - hello and dead interval times must match (depends on the network)
+                - router id must be unique 
+                    assigned based on the following criteria:
+                    - manual 
+                    - highest loopback ip
+                    - highest interface ip 
+                - stub flag must be same 
+                - mtu must be same (at the first connection, or until restart)
+
+            7 ospf states
+                - down 
+                - init 
+                - two-way
+                - ex-start 
+                - ex-change 
+                - loading 
+                - full 
+            
+            Types of area 
+                - backbone : 0
+                - non-backbone : all except 0 
+
+            area 0 is required for route exchange, whether it be physical or virtual
+
+
+            DR / BDR (Designated Router / Backup Designated Router)
+                to prevent flooding in network 
+                criteria:
+                    - highest priority (default 1, up to 255)
+                    - highest router-id 
+                second highest becomes BDR 
+                others become DRother
+
+                40 seconds election timer
+                    - router added after election timer doesn't become DR/BDR
+                    - process clear is required for re-election 
+                DR will flood multicast to 224.0.0.6 
+                DRothers will esnd multicast to 224.0.0.5
+                
+            Types of router 
+                - Backbone Router: area 0
+                - Area Router: any area
+                - Area Border Router: one interface must be in area 0, others can be in any 
+                - Autonomous System Boundary Router: router which exchanges routing tables between different protocols 
+
+            Q. Why is OSPF link state routing protocol?
 
 loopback interface
     virtual interface so that extra routers are not required 

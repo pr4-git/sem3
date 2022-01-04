@@ -370,3 +370,20 @@ for interface metric component details
     - int [interface number]
     - delay [number/10]
     - bandwidth [number]  
+  
+  to set variance 
+    - router eigrp [number]
+    - variance [number]
+
+  to set router-id manually 
+    - router-id [network]
+
+OSPF 
+  - router ospf [process id]
+  - network [network address] [wildcard bits] area [area number]
+  
+  to set router-id manually 
+    - router-id [network]
+
+  to clear ospf process
+    - clear ip ospf process 
