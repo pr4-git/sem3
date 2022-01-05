@@ -1,0 +1,11 @@
+Fork System called  
+- used for creating a new process (child process) 
+- it runs concurrently with the process that makes the fork() call (parent process)
+- after creation of the new child, both processes withh execute the next instuction 
+- they run in separate memory spaces 
+- takes no arguments 
+- returns an integer value
+    - positive value: returns of parent process (contains PID of child process)
+    - zero: returned to the child process 
+    - negative value: child creation was unsuccessful 
+    

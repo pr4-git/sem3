@@ -1,0 +1,5 @@
+To compile 32 bit program in terminal through gcc
+    - gcc -m32 -ggdb -o [outputfilename] [sourcecode]
+
+for information about object files in linux 
+    - objdump -d -M {intel} [execfilename] | grep main.: -A20
