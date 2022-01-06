@@ -53,3 +53,6 @@ ctrl+a to start of the command
 ctrl+e to end of the command 
 ctrl+u to delete everything before the cursor 
 ctrl+k to delete everything after the cursor 
+
+to check built in functions 
+    compgen -c

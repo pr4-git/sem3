@@ -385,5 +385,21 @@ OSPF
   to set router-id manually 
     - router-id [network]
 
+  to change priority
+    - int [interface number]
+    - ip ospf priority [number]
+
+  to change cost 
+    - int [interface number]
+    - ip ospf cost [cost]
+
   to clear ospf process
     - clear ip ospf process 
+
+  to check neighborship 
+    - show ip ospf neighborship
+
+  LSA 1 
+    - show ip ospf database 
+    also, 
+    - show ip ospf databse router [router-id]

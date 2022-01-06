@@ -1,0 +1,28 @@
+Lab reports which are to be made
+
+1. Memory Management
+   replacement algorithm (FIFO, LRU, OPR)
+2. C-Programming Basics
+   identifiers, function, pointers, command line arguments
+3. fork() System Call
+   basic fork() example
+   fork1 (which identifies child and parent process)
+   fork2 (this program will show that parent and child run concurrently)
+4. exec System Call
+   synopsis
+   a program in which exec() will be used
+5. A program which shows race around condition (race.c)
+6. A program for locking mechanism, i.e, mutex lock
+7. A program which demonstrates the use of semaphore
+8. A program for thread creation
+9. A program which demonstrates how a buffer overflow attack is performed
+10. Operating System Security (python - pycrptodome module)
+    hashing
+    salting
+    encryption and decryption
+11. Basic System Administration in LinuxOS
+    folder creation 
+    file permissions 
+    ACL 
+    crontab scheduler 
+    how to background, foreground, sleep, and suspend a process 
