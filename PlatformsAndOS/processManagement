@@ -79,8 +79,25 @@ A Process Control Block (PCB) is required to manage processes
             Burst Time 
                 - time required for CPU execution  
             Turn around Time 
-                - completion time subtracted by arrival time (duration of time) 
+                - total time spent in the system including waiting and executing, completion time subtracted by arrival time (duration of time) 
             Waiting Time
                 - turn around time subtracted by burst time (duration of time)
             
-    
+        Scheduling Algorithms 
+            First Come First Served (FCFS)
+                - process that requests the CPU first gets allocated it first
+                - when process enters the queue, it's PCB is linked to the tail 
+                - after CPU is free, it is allocated to the process at the head of the queue 
+
+                - avg waiting time in FCFS policy is often long and depends 
+                    - order of processes 
+                    - burst time of running process 
+                Convoy Effect 
+                    - if processes with higher burst time arrives in queue first, then it increases avg waiting time
+            
+            Shortest Job First (SJF)
+                - associates each process with the length of its next CPU burst (not total execution length)
+                - CPU is assigned to the next process that has the smallest next CPU burst 
+
+                - hard to implement in short term and requires prediction for long term
+                

@@ -56,3 +56,39 @@ ctrl+k to delete everything after the cursor
 
 to check built in functions 
     compgen -c
+
+cat /etc/group
+sudo usermod -aG docker [username]
+
+
+Docker
+    to pull images 
+        - docker pull [repository]
+    
+    to check available images
+        - docker images   
+
+    to check running processes 
+        - docker ps 
+    
+    to check all processes 
+        - docker ps -a
+
+    to run an image to make a container
+        - docker run [image name]
+        for interactive shell 
+            - docker run -it [image name]
+
+    to start a container (can have multiple containers of the same image)
+        - docker start [image id] OR
+        - docker start [container name]
+
+    to stop a process 
+        - docker stop [image name] OR
+        - docker stop [image id]
+
+    to remove a container 
+        - docker rm [container name 1] [container name 2] [...]
+
+    to remove an image 
+        - docker rmi [image name]
