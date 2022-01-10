@@ -36,7 +36,7 @@ A Process Control Block (PCB) is required to manage processes
                 if there is a single CPU only a single process exists in this state
             
             4. Block/Wait 
-                in case of an I/O request, a process transitions from running state to block/wait state 
+                in case of an I/O request or interrupt, a process transitions from running state to block/wait state 
                 after input is recieved, the process goes back to the ready state for scheduling 
                 multiple processes can exist in this state 
             
@@ -62,6 +62,25 @@ A Process Control Block (PCB) is required to manage processes
                     if required resources (I/O) are already in usa 
                     if main memory is full
                 once resource is released, it is sent back
-            
+    
+    Process Scheduling 
         
+        Scheduling Queues
+            Job Queue
+                - list of programs that is currently being executed by the CPU 
+            Ready Queue 
+                - list of processes that are ready and waiting to be executed 
+
+        CPU Scheduling terms 
+            Arrival Time 
+                - time when the process arrives at the ready queue 
+            Completion Time 
+                - time when the process completes its execution
+            Burst Time 
+                - time required for CPU execution  
+            Turn around Time 
+                - completion time subtracted by arrival time (duration of time) 
+            Waiting Time
+                - turn around time subtracted by burst time (duration of time)
+            
     
