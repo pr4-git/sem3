@@ -160,9 +160,12 @@ There are 3 modes of operation:
     use "sho int trunk" to check vlans
 
   L3 switch
-  ip routing : enables routing
-  no switchport : removes switching, puts the port in routing mode (execute inside port interface)
-  don't forget to "ip add" to assign an ip address to the port
+    
+    to enable routing
+      - ip routing 
+    to remove switching, puts the port in routing mode (execute inside port interface)
+      - no switchport 
+      [don't forget to "ip add" to assign an ip address to the port]
 
       delete vlan.dat : removes database of all vlans (in privilege mode)
 
@@ -378,6 +381,9 @@ for interface metric component details
   to set router-id manually 
     - router-id [network]
 
+  to redistribute 
+    - redistribute ospf 10 metric 100 1 100 1 1500
+
 OSPF 
   - router ospf [process id]
   - network [network address] [wildcard bits] area [area number]
@@ -399,7 +405,14 @@ OSPF
   to check neighborship 
     - show ip ospf neighborship
 
-  LSA 1 
+  LSA
     - show ip ospf database 
     also, 
     - show ip ospf databse router [router-id]
+
+    - show ip ospf database network
+
+  to configure ASBR [in ASBR]
+    - router ospf [pid]
+    - redistribute eigrp [asn] metric-type [type] OR,
+    - redistribute eigrp [asn] subnets
