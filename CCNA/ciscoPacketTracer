@@ -208,6 +208,20 @@ There are 3 modes of operation:
         - ip dhcp excluded-address {..}.1 {..}.99
         - ip dhcp excluded-address {..}.201 {..}.254
 
+
+      to reserve ip for specific client 
+        do sh run | sec pool 
+        - ip dhcp pool [pool name]
+        - host [ip address]
+        - default-router [router ip]
+
+        - client-identifier 01[clientmac]
+        [in client router]
+        - ip address dhcp client-id [interface number]
+        - no sh
+
+        now the specific mac will always get the client 
+
       need to reboot router in real scenario for changes to take place
 
   Router on a stick model
@@ -219,7 +233,7 @@ There are 3 modes of operation:
       [global terminal in router]
       - int {port}.{arbitrary number for sub interface}
         it goes to the sub interface (config-subif)
-      -  we can't add ip directly, first we have to configure encapsulation protocol
+        we can't add ip directly, first we have to configure encapsulation protocol
       - encapsulation dot1Q {vlan ID}
       - ip add
       - no sh
@@ -228,6 +242,10 @@ There are 3 modes of operation:
       - go to main interface
       - no sh
 
+      to configure dhcp through a relay agent router [forward dora messages]
+      [in relay router]
+      - int [relay interface].[subinterface]
+      - ip helper-address [server address]
 
       [on connecting two switches, check if port mode is in trunking or access]
       to fix vlan mismatch

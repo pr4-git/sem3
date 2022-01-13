@@ -1,0 +1,24 @@
+Telnet 
+    - a terminal emulation that enables a user to connect to a remote host 
+    - port 23/tcp
+    - suitable for private networks 
+    - lower bandwidth
+    - requires reachability 
+
+SSH 
+    - more secure 
+    - port 22/tcp 
+    - higher bandwidth
+
+DHCP (dynamic host configuration protocol)
+    - provide IP to client in case of large number of users 
+    - dynamic ip allocation  
+    - DORA process 
+        - Discover 
+            client sends out discover message to identify DHCP servers
+        - Offer 
+            server offers IP
+        - Request 
+            client requests IP
+        - Acknowledge
+            server acknowleges request and completes the cycle
