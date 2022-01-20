@@ -22,3 +22,7 @@ DHCP (dynamic host configuration protocol)
             client requests IP
         - Acknowledge
             server acknowleges request and completes the cycle
+
+FHRP 
+    - in case default gateway breaks down to put backup router
+    - virtual interface 
