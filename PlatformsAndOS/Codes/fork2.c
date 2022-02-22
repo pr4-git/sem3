@@ -1,14 +1,14 @@
-#include  <stdio.h>
-#include  <sys/types.h>
+#include <stdio.h>
+#include <sys/types.h>
 
-#define   MAX_COUNT  200                 /* modify this value to some higher value  */
+#define MAX_COUNT 20000000
 
-void  ChildProcess(void);                /* child process prototype  */
-void  ParentProcess(void);               /* parent process prototype */
+void ChildProcess(void);  /* child process prototype  */
+void ParentProcess(void); /* parent process prototype */
 
-void  main(void)
+void main(void)
 {
-     pid_t  pid;
+     pid_t pid;
 
      pid = fork();
      if (pid == 0)
@@ -17,18 +17,18 @@ void  main(void)
           ParentProcess();
 }
 
-void  ChildProcess(void)
+void ChildProcess(void)
 {
-     int   i;
+     int i;
 
      for (i = 1; i <= MAX_COUNT; i++)
           printf("   This line is from child, value = %d\n", i);
      printf("   *** Child process is done ***\n");
 }
 
-void  ParentProcess(void)
+void ParentProcess(void)
 {
-     int   i;
+     int i;
 
      for (i = 1; i <= MAX_COUNT; i++)
           printf("This line is from parent, value = %d\n", i);

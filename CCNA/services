@@ -26,3 +26,20 @@ DHCP (dynamic host configuration protocol)
 FHRP 
     - in case default gateway breaks down to put backup router
     - virtual interface 
+
+Access Control List
+    - a set of rules which determines what traffic can move through router 
+    - packet filtering firewall 
+    - layer 3 security 
+    - each router interface can only have a single inbound and outbound ACL at a time 
+
+    Types of ACL 
+        * Standard ACL 
+            - creates filters based on source addresses
+            - range 1 - 99
+            - (1300-1999)
+
+        * Extended ACL
+            - on the basis of src, dst, protocol, port, tcp, udp
+            - range 100 - 199
+            - (2000-2699)

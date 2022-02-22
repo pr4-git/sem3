@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-void swap(int *x, int *y) // takes addresses
+void swap(int *x, int *y) // a function that takes addresses as parameters
 {
+    // *x and * y are pointers
     // swapping values in the addresses
     int temp;
     temp = *x;

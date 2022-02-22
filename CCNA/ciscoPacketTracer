@@ -436,7 +436,8 @@ OSPF
     - redistribute eigrp [asn] subnets
 
   to turn off any router interface 
-    - passive-interface
+    - router [routing protocol]
+    - passive-interface [interface]
 
   for fhrp 
     - standby [number] ip [virtual ip]
