@@ -1,7 +1,7 @@
-from Crypto.Hash import SHA256
+from Cryptodome.Hash import SHA256
 
 
-# here we will define a function to generate the hashes for us so that we dont have to repeat again and again
+# here we will define a function to generate the hashes for us so that we dont have to repeat
 def generate_sha256_hash(text):
     h = SHA256.new()
     h.update(f"{text}".encode("utf-8"))
@@ -23,7 +23,6 @@ while True:
         user_input_password_1 = input("Enter Password: ")
 
         user_pwd1_hash = generate_sha256_hash(user_input_password_1)
-
 
         if user_pwd1_hash == user_text_hash:
             print("congratulation! You logged In! :)")
